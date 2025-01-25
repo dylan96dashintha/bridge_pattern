@@ -26,39 +26,39 @@ type Message interface {
 	Send(content string)
 }
 
-// SMSMessage - Refined Abstraction
-type SMSMessage struct {
+// TextMessage - Refined Abstraction
+type TextMessage struct {
 	gateway MessageGateway
 }
 
-func (sms *SMSMessage) Send(content string) {
-	fmt.Println("SMSMessage:")
+func (sms *TextMessage) Send(content string) {
+	fmt.Println("Text Message:")
 	sms.gateway.SendMessage(content)
 }
 
-// EmailMessage - Refined Abstraction
-type EmailMessage struct {
+// WhatsappMessage - Refined Abstraction
+type WhatsappMessage struct {
 	gateway MessageGateway
 }
 
-func (email *EmailMessage) Send(content string) {
-	fmt.Println("EmailMessage:")
+func (email *WhatsappMessage) Send(content string) {
+	fmt.Println("Whatsapp Message:")
 	email.gateway.SendMessage(content)
 }
 
 func main() {
 	// Use Hutch Gateway for SMS
 	hutchGateway := &HutchGateway{}
-	smsMessage := &SMSMessage{gateway: hutchGateway}
-	smsMessage.Send("This is an SMS sent through Hutch.")
+	smsMessage := &TextMessage{gateway: hutchGateway}
+	smsMessage.Send("This is an Text Message sent through Hutch.")
 
 	// Use Dialog Gateway for Email
 	dialogGateway := &DialogGateway{}
-	emailMessage := &EmailMessage{gateway: dialogGateway}
-	emailMessage.Send("This is an Email sent through Dialog.")
+	emailMessage := &WhatsappMessage{gateway: dialogGateway}
+	emailMessage.Send("This is an whatsapp message sent through Dialog.")
 
 	// Switching Gateways
 	fmt.Println("\nSwitching to Dialog Gateway for SMS:")
 	smsMessage.gateway = dialogGateway
-	smsMessage.Send("This is an SMS now sent through Dialog.")
+	smsMessage.Send("This is an text message now sent through Dialog.")
 }
