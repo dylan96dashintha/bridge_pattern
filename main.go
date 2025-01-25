@@ -54,8 +54,8 @@ func main() {
 
 	// Use Dialog Gateway for Email
 	dialogGateway := &DialogGateway{}
-	emailMessage := &WhatsappMessage{gateway: dialogGateway}
-	emailMessage.Send("This is an whatsapp message sent through Dialog.")
+	whatsappMessage := &WhatsappMessage{gateway: dialogGateway}
+	whatsappMessage.Send("This is an whatsapp message sent through Dialog.")
 
 	// Switching Gateways
 	fmt.Println("\nSwitching to Dialog Gateway for SMS:")
