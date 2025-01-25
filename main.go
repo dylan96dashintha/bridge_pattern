@@ -31,9 +31,9 @@ type TextMessage struct {
 	gateway MessageGateway
 }
 
-func (sms *TextMessage) Send(content string) {
+func (t *TextMessage) Send(content string) {
 	fmt.Println("Text Message:")
-	sms.gateway.SendMessage(content)
+	t.gateway.SendMessage(content)
 }
 
 // WhatsappMessage - Refined Abstraction
@@ -41,9 +41,9 @@ type WhatsappMessage struct {
 	gateway MessageGateway
 }
 
-func (email *WhatsappMessage) Send(content string) {
+func (w *WhatsappMessage) Send(content string) {
 	fmt.Println("Whatsapp Message:")
-	email.gateway.SendMessage(content)
+	w.gateway.SendMessage(content)
 }
 
 func main() {
